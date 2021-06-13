@@ -1,2 +1,2 @@
 # HAWK
-*The last member and data management system for non-profits.*
+*The last member mapping and data management system for non-profits.*
