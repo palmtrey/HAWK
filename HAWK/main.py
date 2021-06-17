@@ -4,9 +4,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import csv
 
+
 # A function for coordinate importing from CSV files created by the extractor
-# Takes in the directory of the csv file to import coordinates from, and returns two lists containing
-# longitude and latitude of the coordinates
+# Takes in the directory of the csv file to import coordinates from, and returns
+# two lists containing longitude and latitude of the coordinates
 def importCoordinates(inputdir):
     lons = []
     lats = []

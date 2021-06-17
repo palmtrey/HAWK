@@ -1,5 +1,12 @@
-# Takes in a string, line, with address information in it, and returns that information
-# in proper CSV format
+import os
+import sys
+from tqdm import tqdm
+
+zipToExtract = sys.argv[1]
+
+
+# Takes in a string with address information in it, and returns that
+# information in proper CSV format
 def extractData(line):
 
     # Extract the street number from the line and store it in streetNum
@@ -37,17 +44,18 @@ def extractData(line):
 
     return streetNum + "," + streetName + "," + countyName + "," + zipcode + "," + lon + "," + lat
 
+
 csvOut = "Number,Street,County,Zipcode,Longitude,Latitude\n"
 searchfile = open("data/temp/me-addresses.txt", "r")
-for line in searchfile:
-    if '"04343"' in line:
+for line in tqdm(searchfile):
+    if ('"' + zipToExtract + '"') in line:
         csvOut += extractData(line)
         csvOut += "\n"
 
 searchfile.close()
 
-print(csvOut)
+if not os.path.exists("data/address-csvs"):
+    os.mkdir("data/address-csvs")
 
-with open("Address CSVs\\04343.csv", 'w+') as file:
+with open("data/address-csvs/" + zipToExtract + ".csv", 'w+') as file:
     file.write(csvOut)
-

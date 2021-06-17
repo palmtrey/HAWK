@@ -133,3 +133,4 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows,pycharm
 
 HAWK/data/temp/*
+HAWK/data/address-csvs/*
