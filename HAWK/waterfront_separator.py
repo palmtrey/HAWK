@@ -6,9 +6,9 @@ from tqdm import tqdm
 EARTHRADIUS_M = 6371000
 PI = math.pi
 
-addressFileLoc = ["data/address-csvs/04343.csv", "data/address-csvs/04364.csv"]
+addressFileLoc = ["data/address-csvs/04343.csv", "data/address-csvs/04364.csv", "data/address-csvs/04355.csv"]
 
-addressFile = [open(addressFileLoc[0]), open(addressFileLoc[1])]
+addressFile = [open(addressFileLoc[0]), open(addressFileLoc[1]), open(addressFileLoc[2])]
 
 csvOut = "Number,Street,County,Zipcode,Longitude,Latitude\n"
 
@@ -54,7 +54,7 @@ for zip in addressFile:
     for fileLine in tqdm(zip):
         if fileLine.startswith('N'):
             continue
-        test = determineWaterfront(fileLine, 25)
+        test = determineWaterfront(fileLine, 100)
         if test:
             csvOut += fileLine
 
@@ -62,5 +62,5 @@ for zip in addressFile:
 if not os.path.exists("data/waterfront-address-csvs"):
     os.mkdir("data/waterfront-address-csvs")
 
-with open("data/waterfront-address-csvs/maranacook_04364.csv", 'w+') as file:
+with open("data/waterfront-address-csvs/maranacook.csv", 'w+') as file:
     file.write(csvOut)
