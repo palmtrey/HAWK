@@ -1,6 +1,10 @@
-import re # regular expressions library
+# This script extracts polygon coordinate data from
+# 'data/lake/maranacook_lake/maranacook_lake_coords.txt and separates
+# coordinate data into csv files, one for the lake itself, and several for
+# the islands.
+
 import numpy as np
-import csv
+
 
 # A function to retrieve a specific line from a text file.
 # Returns the line in a string format given at line linenum, from file filedir
@@ -13,12 +17,13 @@ def getLine(linenum, filedir):
 
 
 def processAndWriteToCSV(linenum, inputdir, outputdir):
-    # Separate coordinates into three variables, each containing longitudes, latitudes, and altitudes
+    # Separate coordinates into three variables, each containing longitudes,
+    # latitudes, and altitudes
     lonlatalt = getLine(linenum, inputdir)
 
-    lons = [] # A list of floats to contain all longitudes of points
-    lats = [] # A list of floats to contain all latitudes of points
-    alts = [] # A list of floats to contain all altitudes of points
+    lons = []  # A list of floats to contain all longitudes of points
+    lats = []  # A list of floats to contain all latitudes of points
+    alts = []  # A list of floats to contain all altitudes of points
 
     for triad in lonlatalt.split(' '):
         triadsep = triad.split(',')
@@ -49,16 +54,17 @@ def processAndWriteToCSV(linenum, inputdir, outputdir):
     with open(outputdir, 'w+') as file:
         file.write(csvstring)
 
+
 # Extract lake and write to CSV
-processAndWriteToCSV(77, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook.csv')
+processAndWriteToCSV(77, 'data/lake/maranacook_lake/maranacook_lake_coords.txt'
+                     , 'data/lake/maranacook_lake/maranacook_lake.csv')
 
 # Extract islands and write to CSV
-processAndWriteToCSV(100, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook_is1.csv')
-processAndWriteToCSV(123, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook_is2.csv')
-processAndWriteToCSV(146, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook_is3.csv')
-processAndWriteToCSV(169, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook_is4.csv')
-processAndWriteToCSV(192, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook_is5.csv')
-processAndWriteToCSV(215, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook_is6.csv')
-processAndWriteToCSV(238, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook_is7.csv')
-processAndWriteToCSV(261, '..\FOCW Mapping\Water Body TXT Files\Maranacook Lake.txt', '..\FOCW Mapping\Water Body CSV Coordinate Point Files\maranacook_is8.csv')
-
+processAndWriteToCSV(100, 'data/lake/maranacook_lake/maranacook_lake_coords.txt', 'data/lake/maranacook_lake/maranacook_lake_is1.csv')
+processAndWriteToCSV(123, 'data/lake/maranacook_lake/maranacook_lake_coords.txt', 'data/lake/maranacook_lake/maranacook_lake_is2.csv')
+processAndWriteToCSV(146, 'data/lake/maranacook_lake/maranacook_lake_coords.txt', 'data/lake/maranacook_lake/maranacook_lake_is3.csv')
+processAndWriteToCSV(169, 'data/lake/maranacook_lake/maranacook_lake_coords.txt', 'data/lake/maranacook_lake/maranacook_lake_is4.csv')
+processAndWriteToCSV(192, 'data/lake/maranacook_lake/maranacook_lake_coords.txt', 'data/lake/maranacook_lake/maranacook_lake_is5.csv')
+processAndWriteToCSV(215, 'data/lake/maranacook_lake/maranacook_lake_coords.txt', 'data/lake/maranacook_lake/maranacook_lake_is6.csv')
+processAndWriteToCSV(238, 'data/lake/maranacook_lake/maranacook_lake_coords.txt', 'data/lake/maranacook_lake/maranacook_lake_is7.csv')
+processAndWriteToCSV(261, 'data/lake/maranacook_lake/maranacook_lake_coords.txt', 'data/lake/maranacook_lake/maranacook_lake_is8.csv')

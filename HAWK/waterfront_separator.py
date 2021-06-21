@@ -1,10 +1,7 @@
 import math
-import numpy as np
 import os
 from tqdm import tqdm
 
-EARTHRADIUS_M = 6371000
-PI = math.pi
 
 addressFileLoc = ["data/address-csvs/04343.csv", "data/address-csvs/04364.csv", "data/address-csvs/04355.csv"]
 
@@ -14,6 +11,8 @@ csvOut = "Number,Street,County,Zipcode,Longitude,Latitude\n"
 
 
 def determineWaterfront(line, distance):
+    EARTHRADIUS_M = 6371000
+    PI = math.pi
     attributes = line.split(',')
     attributes[5] = attributes[5].split('\n')
     lon = attributes[4]
