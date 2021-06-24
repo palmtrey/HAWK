@@ -23,10 +23,3 @@ if __name__ == '__main__':
     plotterHandler.plotMaranacookIslands(ax, 'green')
     plotterHandler.plotAddresses(ax, 'red')
     plt.show()
-
-
-    # Next, compare the addresses to the coordinates using
-    # waterfront_separator.py
-
-    # Finally, plot the waterfront addresses for a map of addresses around
-    # the lake.

@@ -1,0 +1,47 @@
+End Goal:
+A system that maps lakes, their islands, and lakefront property, while also
+tracking data associated with lakefront property, such as basic governmental
+information, and any attributes an organization needs. For the FOCW, these
+attributes will consist of member/non-member, last donation, YCC work, etc.
+
+When the user initially sets up an account, they'll be able to choose the area
+they want to track. For the first usage, this area is the Cobbossee Watershed.
+Once an area has been selected, a machine learning algorithm will automatically
+outline all waterbodies and islands in the selected area. For now, this
+algorithm is replaced by manually outlining the area. Once the area is outlined,
+the polygons will be processed and stored into files for later usage.
+
+After mapping the geographic features of the area, the system will then turn to
+properties. Waterfront and water-access properties will be determined using a
+distance algorithm to determine how far away a given property is from each
+geographic feature. These properties can then be mapped using their coordinates.
+
+Once waterfront and water-access properties have been determined, the system
+will then attempt to pull information from local and federal government
+databases to fill basic information about the properties. Some examples of this
+information include:
+- Current owner name(s)
+- Preferred billing address(es) for owner(s)
+- Estimated value of property
+- Property tax
+- Front image of property
+- Aerial image of property
+- Image(s) of owner(s) (this might need to be pulled from elsewhere)
+
+When this basic information about the properties has been collected, the system
+will then pull more advanced information from the user's own databases. For the
+FOCW, examples of this information include:
+- Member or non-member
+- Email associated with property
+- Date(s) and amount(s) of previous donation(s)
+- YCC work done at this site?
+
+Once all of this data has been collected and sorted, the program will have
+created its own database containing all the above information. This data can
+then be viewed, edited, mapped, and sorted. The main feature of the system
+that differentiates it from other data management systems is the mapping
+feature, which creates a large Google-Earth-like map in which the user can see
+all their data, or pick and choose which data to view. Each property can be
+clicked on in the map to view more information about it. Data can
+additionally be mapped or exported to Excel files with advanced specificity, ex.
+"pull all waterfront properties on Cobbossee Lake who are non-members".
