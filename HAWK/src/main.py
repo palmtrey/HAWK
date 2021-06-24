@@ -12,9 +12,11 @@ if __name__ == '__main__':
     updateHandler = updater.Updater()
     updateHandler.update()
 
+    # Find waterfront properties in updated data
     plotterHandler = plotter.Plotter()
     plotterHandler.findWaterfront()
 
+    # Plot waterfront properties
     plt.figure()
     ax = plt.axes(projection=ccrs.Orthographic())
     plotterHandler.plotMaranacookLake(ax, 'blue')

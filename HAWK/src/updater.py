@@ -11,12 +11,13 @@ class Updater:
         print('Updating necessary files for address mapping...')
 
         # Update Maine address txt file from openaddresses.io
-        self.updateFile('https://drive.google.com/uc?id=1u7nVqfgCpCB7z1wv38vDpW\
-k8XVz28eT2', 'data/temp/me-addresses.txt')
+        self.updateFile('https://drive.google.com/uc?id=1u7nVqfgCpCB7z1wv38vDpWk8XVz28eT2', 'data/temp/me-addresses.txt')
 
-        self.updateFile('https://drive.google.com/uc?id=1TeB-ticYgvoj_MSPB4RNUC\
-Ex5NWrcYGw', 'data/lake/maranacook_lake/maranacook_lake_coords.txt')
+        self.updateFile('https://drive.google.com/uc?id=1TeB-ticYgvoj_MSPB4RNUCEx5NWrcYGw', 'data/lake/maranacook_lake/maranacook_lake_coords.txt')
 
+        self.updateFile('https://drive.google.com/uc?id=1_iPj6Pw3Zi5cBvgxjvCKiEEUbow0_vnc', 'data/lake/annabessacook_lake/annabessacook_lake_coords.txt')
+
+        self.updateFile('https://drive.google.com/uc?id=1TcaQFmDHor6FsX-EGpzcpXBbyuvc3GQw', 'data/lake/cobbossee_lake/cobbossee_lake_coords.txt')
         print('Updating complete.')
 
     # Checks if a data file exists in the project. If the file does not exist,
@@ -50,5 +51,5 @@ Ex5NWrcYGw', 'data/lake/maranacook_lake/maranacook_lake_coords.txt')
 
     def updateExtractedCoordinates(self):
         print('Extracting lake polygon coordinates from downloaded file...')
-        os.system('python maranacook_extractor.py')
+        os.system('python lake_extractors/maranacook_extractor.py')
         print('Lake polygon coordinate extraction complete.')
