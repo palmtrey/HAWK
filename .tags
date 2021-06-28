@@ -5,7 +5,9 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 Plotter	.\HAWK\src\plotter.py	/^class Plotter:$/;"	c
-Updater	.\HAWK\src\startup\updater.py	/^class Updater:$/;"	c
+__extractLakeCoordinates	.\HAWK\src\startup\updater.py	/^def __extractLakeCoordinates(lake_pair):$/;"	f	file:
+__extractMaineAddresses	.\HAWK\src\startup\updater.py	/^def __extractMaineAddresses():$/;"	f	file:
+__updateFile	.\HAWK\src\startup\updater.py	/^def __updateFile(pair):$/;"	f	file:
 addressFile	.\HAWK\src\startup\waterfront_separator.py	/^addressFile = [open(addressFileLoc[0]), open(addressFileLoc[1]), open(addressFileLoc[2])]$/;"	v
 addressFileLoc	.\HAWK\src\startup\waterfront_separator.py	/^addressFileLoc = ["data\/address-csvs\/04343.csv", "data\/address-csvs\/04364.csv", "data\/address-csvs\/04355.csv"]$/;"	v
 ax	.\HAWK\src\main.py	/^    ax = plt.axes(projection=ccrs.Orthographic())$/;"	v
@@ -19,19 +21,23 @@ csvOut	.\HAWK\src\startup\waterfront_separator.py	/^csvOut = "Number,Street,Coun
 determineWaterfront	.\HAWK\src\plotter.py	/^    def determineWaterfront(self, line, distance):$/;"	m	class:Plotter
 determineWaterfront	.\HAWK\src\startup\waterfront_separator.py	/^def determineWaterfront(line, distance):$/;"	f
 extractData	.\HAWK\src\startup\address_extractor.py	/^def extractData(line):$/;"	f
-findWaterfront	.\HAWK\src\plotter.py	/^    def findWaterfront(self):$/;"	m	class:Plotter
+extractPolygons	.\HAWK\src\startup\lake_extractor.py	/^def extractPolygons(lake_dir):$/;"	f
+findWaterfront	.\HAWK\src\plotter.py	/^    def findWaterfront():$/;"	m	class:Plotter
 gdown	.\HAWK\src\startup\updater.py	/^import gdown$/;"	i
 getLine	.\HAWK\src\startup\cobbossee_extractor.py	/^def getLine(linenum, filedir):$/;"	f
+getLine	.\HAWK\src\startup\lake_extractor.py	/^def getLine(linenum, filedir):$/;"	f
 getLine	.\HAWK\src\startup\maranacook_extractor.py	/^def getLine(linenum, filedir):$/;"	f
 i	.\HAWK\src\startup\waterfront_separator.py	/^    i = i + 1$/;"	v
 i	.\HAWK\src\startup\waterfront_separator.py	/^i = 0$/;"	v
 importAddressCoordinates	.\HAWK\src\plotter.py	/^    def importAddressCoordinates(self, inputdir):$/;"	m	class:Plotter
 importLakeCoordinates	.\HAWK\src\plotter.py	/^    def importLakeCoordinates(self, inputdir):$/;"	m	class:Plotter
+lakes_output	.\HAWK\src\startup\updater.py	/^lakes_output = '..\/..\/data\/lake\/'$/;"	v
 math	.\HAWK\src\plotter.py	/^import math$/;"	i
 math	.\HAWK\src\startup\waterfront_separator.py	/^import math$/;"	i
 matplotlib	.\HAWK\src\main.py	/^import matplotlib.pyplot as plt$/;"	i
 matplotlib	.\HAWK\src\plotter.py	/^import matplotlib.pyplot as plt$/;"	i
 np	.\HAWK\src\startup\cobbossee_extractor.py	/^import numpy as np$/;"	i
+np	.\HAWK\src\startup\lake_extractor.py	/^import numpy as np$/;"	i
 np	.\HAWK\src\startup\maranacook_extractor.py	/^import numpy as np$/;"	i
 os	.\HAWK\src\main.py	/^import os$/;"	i
 os	.\HAWK\src\plotter.py	/^import os$/;"	i
@@ -42,21 +48,18 @@ plotAddresses	.\HAWK\src\plotter.py	/^    def plotAddresses(self, ax, coloring):
 plotMaranacookIslands	.\HAWK\src\plotter.py	/^    def plotMaranacookIslands(self, ax, coloring):$/;"	m	class:Plotter
 plotMaranacookLake	.\HAWK\src\plotter.py	/^    def plotMaranacookLake(self, ax, coloring):$/;"	m	class:Plotter
 plotter	.\HAWK\src\main.py	/^import plotter$/;"	i
-plotterHandler	.\HAWK\src\main.py	/^    plotterHandler = plotter.Plotter()$/;"	v
 plt	.\HAWK\src\main.py	/^import matplotlib.pyplot as plt$/;"	i
 plt	.\HAWK\src\plotter.py	/^import matplotlib.pyplot as plt$/;"	i
 processAndWriteToCSV	.\HAWK\src\startup\cobbossee_extractor.py	/^def processAndWriteToCSV(linenum, inputdir, outputdir):$/;"	f
+processAndWriteToCSV	.\HAWK\src\startup\lake_extractor.py	/^def processAndWriteToCSV(linenum, inputdir, outputdir):$/;"	f
 processAndWriteToCSV	.\HAWK\src\startup\maranacook_extractor.py	/^def processAndWriteToCSV(linenum, inputdir, outputdir):$/;"	f
 searchfile	.\HAWK\src\startup\address_extractor.py	/^searchfile = open("data\/temp\/me-addresses.txt", "r")$/;"	v
+startup	.\HAWK\src\main.py	/^import startup.updater as updater$/;"	i
 sys	.\HAWK\src\startup\address_extractor.py	/^import sys$/;"	i
 test	.\HAWK\src\startup\waterfront_separator.py	/^        test = determineWaterfront(fileLine, 100)$/;"	v
 tqdm	.\HAWK\src\plotter.py	/^from tqdm import tqdm$/;"	i
 tqdm	.\HAWK\src\startup\address_extractor.py	/^from tqdm import tqdm$/;"	i
 tqdm	.\HAWK\src\startup\waterfront_separator.py	/^from tqdm import tqdm$/;"	i
-update	.\HAWK\src\startup\updater.py	/^    def update(self):$/;"	m	class:Updater
-updateExtractedAddresses	.\HAWK\src\startup\updater.py	/^    def updateExtractedAddresses(self):$/;"	m	class:Updater
-updateExtractedCoordinates	.\HAWK\src\startup\updater.py	/^    def updateExtractedCoordinates(self):$/;"	m	class:Updater
-updateFile	.\HAWK\src\startup\updater.py	/^    def updateFile(self, url, output):$/;"	m	class:Updater
-updateHandler	.\HAWK\src\main.py	/^    updateHandler = updater.Updater()$/;"	v
-updater	.\HAWK\src\main.py	/^import updater$/;"	i
+update	.\HAWK\src\startup\updater.py	/^def update():$/;"	f
+updater	.\HAWK\src\main.py	/^import startup.updater as updater$/;"	i
 zipToExtract	.\HAWK\src\startup\address_extractor.py	/^zipToExtract = sys.argv[1]$/;"	v

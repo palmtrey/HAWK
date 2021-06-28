@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 class Plotter:
 
-    def findWaterfront(self):
+    def findWaterfront():
         addressFileLoc = ["data/address-csvs/04343.csv", "data/address-csvs/04364.csv", "data/address-csvs/04355.csv"]
         addressFile = [open(addressFileLoc[0]), open(addressFileLoc[1]), open(addressFileLoc[2])]
         csvOut = "Number,Street,County,Zipcode,Longitude,Latitude\n"
@@ -20,7 +20,7 @@ class Plotter:
             for fileLine in tqdm(zip):
                 if fileLine.startswith('N'):
                     continue
-                test = self.determineWaterfront(fileLine, 100)
+                test = Plotter.determineWaterfront(fileLine, 100)
                 if test:
                     csvOut += fileLine
 

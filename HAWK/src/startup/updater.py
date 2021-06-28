@@ -4,52 +4,60 @@
 import gdown
 import os
 
+# URL and local storage locations
+lakes_output = '../../data/lake/'
+maine_addresses = {'url': 'https://drive.google.com/uc?id=1u7nVqfgCpCB7z1wv38vDpWk8XVz28eT2','output': '../data/temp/me-addresses.txt'}
+maranacook_lake = {'url': 'https://drive.google.com/uc?id=1TeB-ticYgvoj_MSPB4RNUCEx5NWrcYGw', 'output': lakes_output + 'maranacook_lake/maranacook_lake_coords.txt'}
+annabessacook_lake = {'url': 'https://drive.google.com/uc?id=1_iPj6Pw3Zi5cBvgxjvCKiEEUbow0_vnc', 'output': lakes_output + 'annabessacook_lake/annabessacook_lake_coords.txt'}
+cobbossee_lake = {'url': 'https://drive.google.com/uc?id=1TcaQFmDHor6FsX-EGpzcpXBbyuvc3GQw', 'output': lakes_output + 'cobbossee_lake/cobbossee_lake_coords.txt' }
 
-class Updater:
-    # Updates all files in the project
-    def update(self):
-        print('Updating necessary files for address mapping...')
 
-        # Update Maine address txt file from openaddresses.io
-        self.updateFile('https://drive.google.com/uc?id=1u7nVqfgCpCB7z1wv38vDpWk8XVz28eT2', 'data/temp/me-addresses.txt')
+# Updates all files in the project
+def update():
+    print('Updating...')
 
-        self.updateFile('https://drive.google.com/uc?id=1TeB-ticYgvoj_MSPB4RNUCEx5NWrcYGw', 'data/lake/maranacook_lake/maranacook_lake_coords.txt')
+    # Update Maine address txt file from openaddresses.io
+    __updateFile(maine_addresses)
 
-        self.updateFile('https://drive.google.com/uc?id=1_iPj6Pw3Zi5cBvgxjvCKiEEUbow0_vnc', 'data/lake/annabessacook_lake/annabessacook_lake_coords.txt')
+    __updateFile(maranacook_lake)
 
-        self.updateFile('https://drive.google.com/uc?id=1TcaQFmDHor6FsX-EGpzcpXBbyuvc3GQw', 'data/lake/cobbossee_lake/cobbossee_lake_coords.txt')
-        print('Updating complete.')
+    __updateFile(annabessacook_lake)
 
-    # Checks if a data file exists in the project. If the file does not exist,
-    # creates the necessary directories, and downloads the file from url
-    # and stores it in the directory output
-    def updateFile(self, url, output):
+    __updateFile(cobbossee_lake)
+    print('Updating complete.')
 
-        outSplit = output.split('/')
-        directory = ''
 
-        for dir in outSplit:
-            # if the item is not the last item in the list, append it to
-            # directory
-            if not (len(outSplit) == (outSplit.index(dir) + 1)):
-                directory += dir
-                directory += '/'
+# Checks if a data file exists in the project. If the file does not exist,
+# creates the necessary directories, and downloads the file from url
+# and stores it in the directory output
+def __updateFile(pair):
 
+    outSplit = pair['output'].split('/')
+    directory = ''
+
+    print(outSplit)
+
+    for dir in outSplit[0:len(outSplit) - 1]:
+        print(dir)
+        directory += dir + '/'
         if not os.path.isdir(directory):
             os.mkdir(directory)
-        if not os.path.isfile(output):
-            gdown.download(url, output)
-            if (output == 'data/temp/me-addresses.txt'):
-                self.updateExtractedAddresses()
-            if (output == 'data/lake/maranacook_lake/maranacook_lake_coords.txt'):
-                self.updateExtractedCoordinates()
 
-    def updateExtractedAddresses(self):
-        print('Extracting addresses from downloaded file...')
-        os.system('extract_addresses.bat')
-        print('Address extraction complete.')
+    if not os.path.isfile(pair['output']):
+        gdown.download(pair['url'], pair['output'])
+        if (pair == maine_addresses):
+            __extractMaineAddresses()
+        elif (pair == maranacook_lake):
+            __extractLakeCoordinates(maranacook_lake)
 
-    def updateExtractedCoordinates(self):
-        print('Extracting lake polygon coordinates from downloaded file...')
-        os.system('python lake_extractors/maranacook_extractor.py')
-        print('Lake polygon coordinate extraction complete.')
+
+def __extractMaineAddresses():
+    print('Extracting Maine addresses from downloaded file...')
+    os.system('extract_addresses.bat')
+    print('Address extraction complete.')
+
+
+def __extractLakeCoordinates(lake_pair):
+    print('Extracting lake polygon coordinates from downloaded file...')
+    os.system('python lake_extractors/maranacook_extractor.py')
+    print('Lake polygon coordinate extraction complete.')
