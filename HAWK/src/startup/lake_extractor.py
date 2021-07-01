@@ -93,8 +93,3 @@ def processAndWriteToCSV(linenum, inputdir, outputdir):
     # Writing the data to a csv file
     with open(outputdir, 'w+') as file:
         file.write(csvstring)
-
-
-extractPolygons('../../data/lake/maranacook_lake')
-extractPolygons('../../data/lake/annabessacook_lake')
-extractPolygons('../../data/lake/cobbossee_lake')

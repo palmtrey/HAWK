@@ -3,9 +3,11 @@
 
 import gdown
 import os
+import startup.lake_extractor as le
+import startup.address_extractor as ae
 
 # URL and local storage locations
-lakes_output = '../../data/lake/'
+lakes_output = '../data/lake/'
 maine_addresses = {'url': 'https://drive.google.com/uc?id=1u7nVqfgCpCB7z1wv38vDpWk8XVz28eT2','output': '../data/temp/me-addresses.txt'}
 maranacook_lake = {'url': 'https://drive.google.com/uc?id=1TeB-ticYgvoj_MSPB4RNUCEx5NWrcYGw', 'output': lakes_output + 'maranacook_lake/maranacook_lake_coords.txt'}
 annabessacook_lake = {'url': 'https://drive.google.com/uc?id=1_iPj6Pw3Zi5cBvgxjvCKiEEUbow0_vnc', 'output': lakes_output + 'annabessacook_lake/annabessacook_lake_coords.txt'}
@@ -35,10 +37,7 @@ def __updateFile(pair):
     outSplit = pair['output'].split('/')
     directory = ''
 
-    print(outSplit)
-
     for dir in outSplit[0:len(outSplit) - 1]:
-        print(dir)
         directory += dir + '/'
         if not os.path.isdir(directory):
             os.mkdir(directory)
@@ -47,17 +46,20 @@ def __updateFile(pair):
         gdown.download(pair['url'], pair['output'])
         if (pair == maine_addresses):
             __extractMaineAddresses()
-        elif (pair == maranacook_lake):
-            __extractLakeCoordinates(maranacook_lake)
+        else: # If the file updated is a lake polygon file
+            __extractLakeCoordinates(pair)
 
 
 def __extractMaineAddresses():
-    print('Extracting Maine addresses from downloaded file...')
-    os.system('extract_addresses.bat')
+    print('Extracting watershed addresses from downloaded file...')
+    zips = open('startup/zips.txt')
+    for zip in zips:
+        ae.extractAddresses(zip.split('\n')[0])
+
     print('Address extraction complete.')
 
 
 def __extractLakeCoordinates(lake_pair):
     print('Extracting lake polygon coordinates from downloaded file...')
-    os.system('python lake_extractors/maranacook_extractor.py')
+    le.extractPolygons('/'.join(lake_pair['output'].split('/')[0:len(lake_pair['output'].split('/')) -1]))
     print('Lake polygon coordinate extraction complete.')
