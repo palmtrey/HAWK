@@ -45,7 +45,7 @@ def extractData(line):
 def extractAddresses(zip):
     csvOut = "Number,Street,County,Zipcode,Longitude,Latitude\n"
     searchfile = open("../data/temp/me-addresses.txt", "r")
-    for line in tqdm(searchfile):
+    for line in searchfile:
         if ('"' + zip + '"') in line:
             csvOut += extractData(line)
             csvOut += "\n"

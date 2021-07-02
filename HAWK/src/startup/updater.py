@@ -5,6 +5,7 @@ import gdown
 import os
 import startup.lake_extractor as le
 import startup.address_extractor as ae
+from tqdm import tqdm
 
 # URL and local storage locations
 lakes_output = '../data/lake/'
@@ -53,7 +54,7 @@ def __updateFile(pair):
 def __extractMaineAddresses():
     print('Extracting watershed addresses from downloaded file...')
     zips = open('startup/zips.txt')
-    for zip in zips:
+    for zip in tqdm(zips):
         ae.extractAddresses(zip.split('\n')[0])
 
     print('Address extraction complete.')

@@ -6,29 +6,36 @@ import os
 from tqdm import tqdm
 
 
-def findWaterfront():
-    addressFileLoc = ["../data/address-csvs/04364.csv", "../data/address-csvs/04355.csv"]
-    addressFile = [open(addressFileLoc[0]), open(addressFileLoc[1])]
+# Finds the waterfront properties given a lake name and list of zip codes to search
+def findWaterfront(lake_name, zips, distance_from = 100):
+
+    addressFileLoc = []
+    addressFile = []
+    for zip in zips:
+        addressFileLoc.append('../data/address-csvs/' + zip + '.csv')
+        addressFile.append(open('../data/address-csvs/' + zip + '.csv'))
+
     csvOut = "Number,Street,County,Zipcode,Longitude,Latitude\n"
 
     i = 0
+
     for zip in addressFile:
         print("Now sorting addresses from file: " + addressFileLoc[i])
         i = i + 1
         for fileLine in tqdm(zip):
-            if fileLine.startswith('N'):
+            if fileLine.startswith('N'): # if the line is the first line in the file
                 continue
-            test = determineWaterfront(fileLine, 100)
+            test = determineWaterfront(fileLine, distance_from, '../data/lake/' + lake_name + '/' + lake_name + '.csv')
             if test:
                 csvOut += fileLine
 
     if not os.path.exists("../data/waterfront-address-csvs"):
         os.mkdir("../data/waterfront-address-csvs")
 
-    with open("../data/waterfront-address-csvs/maranacook.csv", 'w+') as file:
+    with open('../data/waterfront-address-csvs/' + lake_name + '.csv', 'w+') as file:
         file.write(csvOut)
 
-def determineWaterfront(line, distance):
+def determineWaterfront(line, distance, lake_file_loc):
     EARTHRADIUS_M = 6371000
     PI = math.pi
     attributes = line.split(',')
@@ -36,12 +43,13 @@ def determineWaterfront(line, distance):
     lon = attributes[4]
     lat = attributes[5][0]
 
-    lakeFile = open("../data/lake/maranacook_lake/maranacook_lake.csv")
-    for lakeLine in lakeFile:
+    file = open(lake_file_loc)
+
+    for line in file:
         # Skip the first line
-        if lakeLine.startswith("L"):
+        if line.startswith("L"): # if line is the first line in the lake file
             continue
-        attrLake = lakeLine.split(',')
+        attrLake = line.split(',')
         lakeLon = attrLake[0]
         lakeLat = attrLake[1]
 
@@ -58,9 +66,7 @@ def determineWaterfront(line, distance):
         d = EARTHRADIUS_M * c
 
         if(d < distance):
-            lakeFile.close()
             return True
-    lakeFile.close()
     return False
 
 # Imports address coordinates from a csv file, inputdir.
@@ -102,22 +108,22 @@ def importLakeCoordinates(inputdir):
     return lons, lats
 
 # Plots the addresses on Maranacook Lake
-def plotAddresses(ax, coloring):
-    lons, lats = importAddressCoordinates('../data/waterfront-address-csvs/maranacook.csv')
+def plotAddresses(ax, coloring, lake_name):
+    lons, lats = importAddressCoordinates('../data/waterfront-address-csvs/' + lake_name + '.csv')
     ax.scatter(lons, lats, s=5, marker='o', color=coloring)
 
 # Plots Maranacook Lake
 # Takes in an axes object, ax, to plot on, and a color, coloring, to plot in
-def plotMaranacookLake(ax, coloring):
+def plotMaranacookLake(ax, coloring, lake_name):
     # Import coordinates of lake
-    lonsLake, latsLake = importLakeCoordinates('../data/lake/maranacook_lake/maranacook_lake.csv')
+    lonsLake, latsLake = importLakeCoordinates('../data/lake/' + lake_name + '/' + lake_name + '.csv')
 
     # Plot imported lake
     ax.plot(lonsLake, latsLake, color=coloring)
 
 # Plots Maranacook Lake's islands
 # Takes in an axes object and a color
-def plotMaranacookIslands(ax, coloring):
+def plotMaranacookIslands(ax, coloring, lake_name):
     # Import coordinates of islands
     lonsIs1, latsIs1 = importLakeCoordinates('../data/lake/maranacook_lake/maranacook_lake_is1.csv')
     lonsIs2, latsIs2 = importLakeCoordinates('../data/lake/maranacook_lake/maranacook_lake_is2.csv')

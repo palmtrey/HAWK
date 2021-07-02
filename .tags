@@ -17,16 +17,19 @@ ccrs	.\HAWK\src\main.py	/^import cartopy.crs as ccrs$/;"	i
 ccrs	.\HAWK\src\plotter.py	/^import cartopy.crs as ccrs$/;"	i
 csv	.\HAWK\src\plotter.py	/^import csv$/;"	i
 csvOut	.\HAWK\src\startup\waterfront_separator.py	/^csvOut = "Number,Street,County,Zipcode,Longitude,Latitude\\n"$/;"	v
-determineWaterfront	.\HAWK\src\plotter.py	/^def determineWaterfront(line, distance):$/;"	f
+determineWaterfront	.\HAWK\src\plotter.py	/^def determineWaterfront(line, distance, lake_file_loc):$/;"	f
 determineWaterfront	.\HAWK\src\startup\waterfront_separator.py	/^def determineWaterfront(line, distance):$/;"	f
 extractAddresses	.\HAWK\src\startup\address_extractor.py	/^def extractAddresses(zip):$/;"	f
 extractData	.\HAWK\src\startup\address_extractor.py	/^def extractData(line):$/;"	f
 extractPolygons	.\HAWK\src\startup\lake_extractor.py	/^def extractPolygons(lake_dir):$/;"	f
-findWaterfront	.\HAWK\src\plotter.py	/^def findWaterfront():$/;"	f
+file	.\HAWK\src\book_extractor.py	/^file = open('out1.txt', 'w+')$/;"	v
+findWaterfront	.\HAWK\src\plotter.py	/^def findWaterfront(lake_name, zips, distance_from = 100):$/;"	f
+format	.\HAWK\src\book_extractor.py	/^format = pl.LAParams(char_margin = 10, all_texts = True)$/;"	v
 gdown	.\HAWK\src\startup\updater.py	/^import gdown$/;"	i
 getLine	.\HAWK\src\startup\cobbossee_extractor.py	/^def getLine(linenum, filedir):$/;"	f
 getLine	.\HAWK\src\startup\lake_extractor.py	/^def getLine(linenum, filedir):$/;"	f
 getLine	.\HAWK\src\startup\maranacook_extractor.py	/^def getLine(linenum, filedir):$/;"	f
+hl	.\HAWK\src\book_extractor.py	/^import pdfminer.high_level as hl$/;"	i
 i	.\HAWK\src\startup\waterfront_separator.py	/^    i = i + 1$/;"	v
 i	.\HAWK\src\startup\waterfront_separator.py	/^i = 0$/;"	v
 importAddressCoordinates	.\HAWK\src\plotter.py	/^def importAddressCoordinates(inputdir):$/;"	f
@@ -45,9 +48,12 @@ os	.\HAWK\src\plotter.py	/^import os$/;"	i
 os	.\HAWK\src\startup\address_extractor.py	/^import os$/;"	i
 os	.\HAWK\src\startup\updater.py	/^import os$/;"	i
 os	.\HAWK\src\startup\waterfront_separator.py	/^import os$/;"	i
-plotAddresses	.\HAWK\src\plotter.py	/^def plotAddresses(ax, coloring):$/;"	f
-plotMaranacookIslands	.\HAWK\src\plotter.py	/^def plotMaranacookIslands(ax, coloring):$/;"	f
-plotMaranacookLake	.\HAWK\src\plotter.py	/^def plotMaranacookLake(ax, coloring):$/;"	f
+pdfminer	.\HAWK\src\book_extractor.py	/^import pdfminer.high_level as hl$/;"	i
+pdfminer	.\HAWK\src\book_extractor.py	/^import pdfminer.layout as pl$/;"	i
+pl	.\HAWK\src\book_extractor.py	/^import pdfminer.layout as pl$/;"	i
+plotAddresses	.\HAWK\src\plotter.py	/^def plotAddresses(ax, coloring, lake_name):$/;"	f
+plotMaranacookIslands	.\HAWK\src\plotter.py	/^def plotMaranacookIslands(ax, coloring, lake_name):$/;"	f
+plotMaranacookLake	.\HAWK\src\plotter.py	/^def plotMaranacookLake(ax, coloring, lake_name):$/;"	f
 plotter	.\HAWK\src\main.py	/^import plotter$/;"	i
 plt	.\HAWK\src\main.py	/^import matplotlib.pyplot as plt$/;"	i
 plt	.\HAWK\src\plotter.py	/^import matplotlib.pyplot as plt$/;"	i
@@ -59,8 +65,10 @@ startup	.\HAWK\src\startup\updater.py	/^import startup.address_extractor as ae$/
 startup	.\HAWK\src\startup\updater.py	/^import startup.lake_extractor as le$/;"	i
 sys	.\HAWK\src\startup\address_extractor.py	/^import sys$/;"	i
 test	.\HAWK\src\startup\waterfront_separator.py	/^        test = determineWaterfront(fileLine, 100)$/;"	v
+text	.\HAWK\src\book_extractor.py	/^text = hl.extract_text('book.pdf', format)$/;"	v
 tqdm	.\HAWK\src\plotter.py	/^from tqdm import tqdm$/;"	i
 tqdm	.\HAWK\src\startup\address_extractor.py	/^from tqdm import tqdm$/;"	i
+tqdm	.\HAWK\src\startup\updater.py	/^from tqdm import tqdm$/;"	i
 tqdm	.\HAWK\src\startup\waterfront_separator.py	/^from tqdm import tqdm$/;"	i
 update	.\HAWK\src\startup\updater.py	/^def update():$/;"	f
 updater	.\HAWK\src\main.py	/^import startup.updater as updater$/;"	i
