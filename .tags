@@ -22,7 +22,7 @@ determineWaterfront	.\HAWK\src\startup\waterfront_separator.py	/^def determineWa
 extractAddresses	.\HAWK\src\startup\address_extractor.py	/^def extractAddresses(zip):$/;"	f
 extractData	.\HAWK\src\startup\address_extractor.py	/^def extractData(line):$/;"	f
 extractPolygons	.\HAWK\src\startup\lake_extractor.py	/^def extractPolygons(lake_dir):$/;"	f
-file	.\HAWK\src\book_extractor.py	/^file = open('out1.txt', 'w+')$/;"	v
+file	.\HAWK\src\book_extractor.py	/^file = open('out.txt', 'w+')$/;"	v
 findWaterfront	.\HAWK\src\plotter.py	/^def findWaterfront(lake_name, zips, distance_from = 100):$/;"	f
 format	.\HAWK\src\book_extractor.py	/^format = pl.LAParams(char_margin = 10, all_texts = True)$/;"	v
 gdown	.\HAWK\src\startup\updater.py	/^import gdown$/;"	i
@@ -65,7 +65,7 @@ startup	.\HAWK\src\startup\updater.py	/^import startup.address_extractor as ae$/
 startup	.\HAWK\src\startup\updater.py	/^import startup.lake_extractor as le$/;"	i
 sys	.\HAWK\src\startup\address_extractor.py	/^import sys$/;"	i
 test	.\HAWK\src\startup\waterfront_separator.py	/^        test = determineWaterfront(fileLine, 100)$/;"	v
-text	.\HAWK\src\book_extractor.py	/^text = hl.extract_text('book.pdf', format)$/;"	v
+text	.\HAWK\src\book_extractor.py	/^text = hl.extract_text('..\/data\/tax_books\/wayne_book.pdf', page_numbers = [2])$/;"	v
 tqdm	.\HAWK\src\plotter.py	/^from tqdm import tqdm$/;"	i
 tqdm	.\HAWK\src\startup\address_extractor.py	/^from tqdm import tqdm$/;"	i
 tqdm	.\HAWK\src\startup\updater.py	/^from tqdm import tqdm$/;"	i
