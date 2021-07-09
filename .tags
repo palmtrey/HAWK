@@ -4,6 +4,10 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+Image	.\HAWK\src\image_cropper.py	/^from PIL import Image$/;"	i
+LAParams	.\HAWK\src\book_extractor.py	/^    from pdfminer.layout import LAParams$/;"	i
+StringIO	.\HAWK\src\book_extractor.py	/^         from io import StringIO$/;"	i
+StringIO	.\HAWK\src\book_extractor.py	/^        from io import BytesIO as StringIO$/;"	i
 __extractLakeCoordinates	.\HAWK\src\startup\updater.py	/^def __extractLakeCoordinates(lake_pair):$/;"	f	file:
 __extractMaineAddresses	.\HAWK\src\startup\updater.py	/^def __extractMaineAddresses():$/;"	f	file:
 __updateFile	.\HAWK\src\startup\updater.py	/^def __updateFile(pair):$/;"	f	file:
@@ -22,24 +26,40 @@ determineWaterfront	.\HAWK\src\startup\waterfront_separator.py	/^def determineWa
 extractAddresses	.\HAWK\src\startup\address_extractor.py	/^def extractAddresses(zip):$/;"	f
 extractData	.\HAWK\src\startup\address_extractor.py	/^def extractData(line):$/;"	f
 extractPolygons	.\HAWK\src\startup\lake_extractor.py	/^def extractPolygons(lake_dir):$/;"	f
-file	.\HAWK\src\book_extractor.py	/^file = open('out.txt', 'w+')$/;"	v
+findDivs	.\HAWK\src\book_extractor.py	/^def findDivs(string):$/;"	f
 findWaterfront	.\HAWK\src\plotter.py	/^def findWaterfront(lake_name, zips, distance_from = 100):$/;"	f
-format	.\HAWK\src\book_extractor.py	/^format = pl.LAParams(char_margin = 10, all_texts = True)$/;"	v
+foundClosing	.\HAWK\src\book_extractor.py	/^                    foundClosing = False$/;"	v
+foundClosing	.\HAWK\src\book_extractor.py	/^                foundClosing = False$/;"	v
+foundClosing	.\HAWK\src\book_extractor.py	/^                foundClosing = True$/;"	v
+foundClosing	.\HAWK\src\book_extractor.py	/^        foundClosing = True$/;"	v
 gdown	.\HAWK\src\startup\updater.py	/^import gdown$/;"	i
+getAddressesFromPNG	.\HAWK\src\image_cropper.py	/^def getAddressesFromPNG(file_address, output_dir, iterator):$/;"	f
 getLine	.\HAWK\src\startup\cobbossee_extractor.py	/^def getLine(linenum, filedir):$/;"	f
 getLine	.\HAWK\src\startup\lake_extractor.py	/^def getLine(linenum, filedir):$/;"	f
 getLine	.\HAWK\src\startup\maranacook_extractor.py	/^def getLine(linenum, filedir):$/;"	f
-hl	.\HAWK\src\book_extractor.py	/^import pdfminer.high_level as hl$/;"	i
+hl	.\HAWK\src\book_extractor.py	/^    import pdfminer.high_level as hl$/;"	i
 i	.\HAWK\src\startup\waterfront_separator.py	/^    i = i + 1$/;"	v
 i	.\HAWK\src\startup\waterfront_separator.py	/^i = 0$/;"	v
 importAddressCoordinates	.\HAWK\src\plotter.py	/^def importAddressCoordinates(inputdir):$/;"	f
 importLakeCoordinates	.\HAWK\src\plotter.py	/^def importLakeCoordinates(inputdir):$/;"	f
+inContent	.\HAWK\src\book_extractor.py	/^                inContent = False$/;"	v
+inContent	.\HAWK\src\book_extractor.py	/^                inContent = True$/;"	v
+inContent	.\HAWK\src\book_extractor.py	/^        inContent = False$/;"	v
+iterator	.\HAWK\src\image_cropper.py	/^        iterator = getAddressesFromPNG('wayne_book\/wayne_book-' + str(i) + '.png', 'wayne_addresses', iterator)$/;"	v
+iterator	.\HAWK\src\image_cropper.py	/^        iterator = getAddressesFromPNG('wayne_book\/wayne_book-0' + str(i) + '.png', 'wayne_addresses', iterator)$/;"	v
+iterator	.\HAWK\src\image_cropper.py	/^        iterator = getAddressesFromPNG('wayne_book\/wayne_book-00' + str(i) + '.png', 'wayne_addresses', iterator)$/;"	v
+iterator	.\HAWK\src\image_cropper.py	/^    iterator = 0$/;"	v
+just_content_output	.\HAWK\src\book_extractor.py	/^    just_content_output = ''$/;"	v
 lakes_output	.\HAWK\src\startup\updater.py	/^lakes_output = '..\/data\/lake\/'$/;"	v
 le	.\HAWK\src\startup\updater.py	/^import startup.lake_extractor as le$/;"	i
+line_content	.\HAWK\src\book_extractor.py	/^        line_content = ''$/;"	v
+line_content_iterator	.\HAWK\src\book_extractor.py	/^        line_content_iterator = 0$/;"	v
+lines_content	.\HAWK\src\book_extractor.py	/^    lines_content = []$/;"	v
 math	.\HAWK\src\plotter.py	/^import math$/;"	i
 math	.\HAWK\src\startup\waterfront_separator.py	/^import math$/;"	i
 matplotlib	.\HAWK\src\main.py	/^import matplotlib.pyplot as plt$/;"	i
 matplotlib	.\HAWK\src\plotter.py	/^import matplotlib.pyplot as plt$/;"	i
+np	.\HAWK\src\image_cropper.py	/^import numpy as np$/;"	i
 np	.\HAWK\src\startup\cobbossee_extractor.py	/^import numpy as np$/;"	i
 np	.\HAWK\src\startup\lake_extractor.py	/^import numpy as np$/;"	i
 np	.\HAWK\src\startup\maranacook_extractor.py	/^import numpy as np$/;"	i
@@ -48,9 +68,10 @@ os	.\HAWK\src\plotter.py	/^import os$/;"	i
 os	.\HAWK\src\startup\address_extractor.py	/^import os$/;"	i
 os	.\HAWK\src\startup\updater.py	/^import os$/;"	i
 os	.\HAWK\src\startup\waterfront_separator.py	/^import os$/;"	i
-pdfminer	.\HAWK\src\book_extractor.py	/^import pdfminer.high_level as hl$/;"	i
-pdfminer	.\HAWK\src\book_extractor.py	/^import pdfminer.layout as pl$/;"	i
-pl	.\HAWK\src\book_extractor.py	/^import pdfminer.layout as pl$/;"	i
+outArray	.\HAWK\src\book_extractor.py	/^    outArray = splitIntoDivs('..\/wayne_test-form.txt')$/;"	v
+output	.\HAWK\src\book_extractor.py	/^    output = ''$/;"	v
+output_string	.\HAWK\src\book_extractor.py	/^    output_string = StringIO()$/;"	v
+pdfminer	.\HAWK\src\book_extractor.py	/^    import pdfminer.high_level as hl$/;"	i
 plotAddresses	.\HAWK\src\plotter.py	/^def plotAddresses(ax, coloring, lake_name):$/;"	f
 plotMaranacookIslands	.\HAWK\src\plotter.py	/^def plotMaranacookIslands(ax, coloring, lake_name):$/;"	f
 plotMaranacookLake	.\HAWK\src\plotter.py	/^def plotMaranacookLake(ax, coloring, lake_name):$/;"	f
@@ -60,12 +81,16 @@ plt	.\HAWK\src\plotter.py	/^import matplotlib.pyplot as plt$/;"	i
 processAndWriteToCSV	.\HAWK\src\startup\cobbossee_extractor.py	/^def processAndWriteToCSV(linenum, inputdir, outputdir):$/;"	f
 processAndWriteToCSV	.\HAWK\src\startup\lake_extractor.py	/^def processAndWriteToCSV(linenum, inputdir, outputdir):$/;"	f
 processAndWriteToCSV	.\HAWK\src\startup\maranacook_extractor.py	/^def processAndWriteToCSV(linenum, inputdir, outputdir):$/;"	f
+re	.\HAWK\src\book_extractor.py	/^import re$/;"	i
+splitIntoDivs	.\HAWK\src\book_extractor.py	/^def splitIntoDivs(file_dir):$/;"	f
 startup	.\HAWK\src\main.py	/^import startup.updater as updater$/;"	i
 startup	.\HAWK\src\startup\updater.py	/^import startup.address_extractor as ae$/;"	i
 startup	.\HAWK\src\startup\updater.py	/^import startup.lake_extractor as le$/;"	i
+sys	.\HAWK\src\book_extractor.py	/^    import sys$/;"	i
+sys	.\HAWK\src\book_extractor.py	/^import sys$/;"	i
 sys	.\HAWK\src\startup\address_extractor.py	/^import sys$/;"	i
+temp	.\HAWK\src\book_extractor.py	/^        temp = division.replace('\\n', '', 50)$/;"	v
 test	.\HAWK\src\startup\waterfront_separator.py	/^        test = determineWaterfront(fileLine, 100)$/;"	v
-text	.\HAWK\src\book_extractor.py	/^text = hl.extract_text('..\/data\/tax_books\/wayne_book.pdf', page_numbers = [2])$/;"	v
 tqdm	.\HAWK\src\plotter.py	/^from tqdm import tqdm$/;"	i
 tqdm	.\HAWK\src\startup\address_extractor.py	/^from tqdm import tqdm$/;"	i
 tqdm	.\HAWK\src\startup\updater.py	/^from tqdm import tqdm$/;"	i
