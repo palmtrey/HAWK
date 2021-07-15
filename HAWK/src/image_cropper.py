@@ -46,11 +46,10 @@ def getAddressesFromPNG(file_address, output_dir, iterator):
 if __name__ == '__main__':
     iterator = 1
 
+    output_dir = '../data/tax_books/pngs/readfield_addresses'
+
     for i in range(1, 9):
-        iterator = getAddressesFromPNG('../data/tax_books/pngs/wayne_book/wayne_book-00' + str(i) + '.png', '../data/tax_books/pngs/wayne_addresses', iterator)
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/readfield_book/readfield_book-00' + str(i) + '.png', output_dir, iterator)
 
-    for i in range(10, 99):
-        iterator = getAddressesFromPNG('../data/tax_books/pngs/wayne_book/wayne_book-0' + str(i) + '.png', '../data/tax_books/pngs/wayne_addresses', iterator)
-
-    for i in range(100, 188):
-        iterator = getAddressesFromPNG('../data/tax_books/pngs/wayne_book/wayne_book-' + str(i) + '.png', '../data/tax_books/pngs/wayne_addresses', iterator)
+    for i in range(10, 98):
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/readfield_book/readfield_book-0' + str(i) + '.png', output_dir, iterator)
