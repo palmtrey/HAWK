@@ -4,9 +4,8 @@ import numpy as np
 def getAddressesFromPNG(file_address, output_dir, iterator):
 
     im = Image.open(file_address).convert('1')
-    #print(im.size)
     region = np.asarray(im.crop([220, 192, 581, 2000]))
-    #Image.fromarray(region).show()
+
     # Find the row numbers of the black lines
     i = 0
     row_nums = []
@@ -45,15 +44,13 @@ def getAddressesFromPNG(file_address, output_dir, iterator):
     return iterator
 
 if __name__ == '__main__':
-    iterator = 0
-
-    #iterator = getAddressesFromPNG('wayne_book/wayne_book-005.png', 'wayne_addresses', iterator)
+    iterator = 1
 
     for i in range(1, 9):
-        iterator = getAddressesFromPNG('wayne_book/wayne_book-00' + str(i) + '.png', 'wayne_addresses', iterator)
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/wayne_book/wayne_book-00' + str(i) + '.png', '../data/tax_books/pngs/wayne_addresses', iterator)
 
     for i in range(10, 99):
-        iterator = getAddressesFromPNG('wayne_book/wayne_book-0' + str(i) + '.png', 'wayne_addresses', iterator)
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/wayne_book/wayne_book-0' + str(i) + '.png', '../data/tax_books/pngs/wayne_addresses', iterator)
 
     for i in range(100, 188):
-        iterator = getAddressesFromPNG('wayne_book/wayne_book-' + str(i) + '.png', 'wayne_addresses', iterator)
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/wayne_book/wayne_book-' + str(i) + '.png', '../data/tax_books/pngs/wayne_addresses', iterator)
