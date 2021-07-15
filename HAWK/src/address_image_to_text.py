@@ -12,7 +12,7 @@ def getAddressText(dir, numAddresses):
     addresses = []
     for i in tqdm(range(1, numAddresses)):
 
-        if i == 341 or i == 342:
+        if i == 341 or i == 342 or i == 278:
             continue
 
         string = pytesseract.image_to_string(dir + '/address_' + str(i) + '.png')
@@ -82,6 +82,6 @@ def getAddressText(dir, numAddresses):
 
 
 if __name__ == '__main__':
-    total_files = 574
+    total_files = 1390
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
     getAddressText('../data/tax_books/pngs/readfield_addresses', total_files + 1)

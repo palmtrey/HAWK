@@ -5,7 +5,7 @@ def getAddressesFromPNG(file_address, output_dir, iterator):
 
     im = Image.open(file_address).convert('1')
     region = np.asarray(im.crop([220, 192, 581, 2000]))
-
+    
     # Find the row numbers of the black lines
     i = 0
     row_nums = []
@@ -38,7 +38,7 @@ def getAddressesFromPNG(file_address, output_dir, iterator):
 
     # Save the cropped address images
     for image in croppedImages:
-        image.save(output_dir + '/address_' + str(iterator) + '.png')
+        image.save(output_dir + 'address_' + str(iterator) + '.png')
         iterator += 1
 
     return iterator
@@ -46,10 +46,7 @@ def getAddressesFromPNG(file_address, output_dir, iterator):
 if __name__ == '__main__':
     iterator = 1
 
-    output_dir = '../data/tax_books/pngs/readfield_addresses'
+    output_dir = '../data/tax_books/pngs/readfield_addresses/'
 
-    for i in range(1, 9):
-        iterator = getAddressesFromPNG('../data/tax_books/pngs/readfield_book/readfield_book-00' + str(i) + '.png', output_dir, iterator)
-
-    for i in range(10, 98):
-        iterator = getAddressesFromPNG('../data/tax_books/pngs/readfield_book/readfield_book-0' + str(i) + '.png', output_dir, iterator)
+    for i in range(1, 297):
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/readfield_book/readfield_book-' + str(i) + '.png', output_dir, iterator)
