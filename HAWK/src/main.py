@@ -12,9 +12,9 @@ if __name__ == '__main__':
     #updater.update()
 
     # Find waterfront properties in updated data
-    plotter.findWaterfront('maranacook_lake', ['04364', '04355'], distance_from = 200)
+    #plotter.findWaterfront('maranacook_lake', ['04364', '04355'], distance_from = 100)
 
-    #plotter.findWaterfront('cobbossee_lake', ['04351'])
+    plotter.findWaterfront('cobbossee_lake', ['04350', '04351', '04259', '04265', '04345', '04364'], distance_from = 100)
 
     # Plot waterfront properties
     plt.figure()
