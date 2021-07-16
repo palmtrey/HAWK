@@ -11,6 +11,8 @@ def cross_reference(tax_dir, waterfront_dir, zip):
         tax_file = open(tax_dir)
         if re.search(zip, waterfront_address):
             temp = ' '.join(waterfront_address.split(',')[0:2])
+            temp = re.sub(' Shore Rd', ' Shore', temp)
+            temp = re.sub('N Campers Point Rd', 'North Campers Point', temp)
             temp = re.sub(' Rd', ' Road', temp)
             temp = re.sub(' Dr', ' Drive', temp)
             temp = re.sub(' Ln', ' Lane', temp)
@@ -24,7 +26,7 @@ def cross_reference(tax_dir, waterfront_dir, zip):
 
     tax_file.close()
     waterfront_file.close()
-    with open('final.csv', 'w+') as file:
+    with open('final-04355.csv', 'w+') as file:
         file.write(csvout)
             #print(temp)
 

@@ -9,10 +9,10 @@ import startup.updater as updater
 if __name__ == '__main__':
 
     # Update the data in the project using updater.py
-    updater.update()
+    #updater.update()
 
     # Find waterfront properties in updated data
-    plotter.findWaterfront('maranacook_lake', ['04364', '04355'], distance_from = 100)
+    plotter.findWaterfront('maranacook_lake', ['04364', '04355'], distance_from = 200)
 
     #plotter.findWaterfront('cobbossee_lake', ['04351'])
 

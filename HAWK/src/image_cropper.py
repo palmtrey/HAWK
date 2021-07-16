@@ -1,16 +1,17 @@
 from PIL import Image
 import numpy as np
+from tqdm import tqdm
 
 def getAddressesFromPNG(file_address, output_dir, iterator):
 
-    im = Image.open(file_address).convert('1')
+    im = Image.open(file_address).convert('L')
     region = np.asarray(im.crop([220, 192, 581, 2000]))
-    
+    #toShow = im.crop([220, 192, 581, 2000]).save('image.png')
     # Find the row numbers of the black lines
     i = 0
     row_nums = []
     for row in region:
-        if (row < 1).all():
+        if (row < 100).all():
             row_nums.append(i)
         i += 1
 
@@ -23,7 +24,6 @@ def getAddressesFromPNG(file_address, output_dir, iterator):
 
         if -1 not in diff:
             rows.append(numCheck)
-
 
     # Crop the images using the row numbers
     croppedImages = []
@@ -48,5 +48,5 @@ if __name__ == '__main__':
 
     output_dir = '../data/tax_books/pngs/readfield_addresses/'
 
-    for i in range(1, 297):
+    for i in tqdm(range(1, 298)):
         iterator = getAddressesFromPNG('../data/tax_books/pngs/readfield_book/readfield_book-' + str(i) + '.png', output_dir, iterator)
