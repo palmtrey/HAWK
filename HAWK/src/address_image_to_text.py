@@ -8,18 +8,17 @@ import re
 # This function takes in a directory containing
 def getAddressText(dir, numAddresses):
 
+    ignored_nums = []
 
     addresses = []
-    for i in tqdm(range(1, numAddresses)):
+    for iterator in tqdm(range(1, numAddresses)):
 
-        if i == 347 or i == 348:
-            continue
+        string = pytesseract.image_to_string(dir + '/address_' + str(iterator) + '.png')
 
-        string = pytesseract.image_to_string(dir + '/address_' + str(i) + '.png')
         string = string.replace(',','')
 
         string = string.split('\n')
-        local = ''
+
         i = 0
         zip_idx = -1
 
@@ -41,7 +40,11 @@ def getAddressText(dir, numAddresses):
                 if re.search('\s?[0-9]{5}(?:-[0-9]{1,4})?(\s.*)?$', item):
                     zip_idx = i
             i += 1
-        assert zip_idx != -1
+        #print(zip_idx)
+        if zip_idx == -1:
+            ignored_nums.append(iterator)
+            continue
+        #assert zip_idx != -1
 
         # check for out of country addresses and fix
         for item in string[zip_idx+1:]:
@@ -54,11 +57,15 @@ def getAddressText(dir, numAddresses):
         local = ''
 
         i = 0
+        #print(string)
         for item in string:
 
-            if len(item) > 4 and ((item[0].isnumeric() and item[1].isnumeric() and item[2].isnumeric() and item[3] == '-') or (item[0].isnumeric() and item[1].isnumeric() and item[2].isnumeric() and item[3].isnumeric() and item[4] == '-')) :
+            # finding the stopping point after the local address
+            if re.search('^[0-9]{2,4}-', item) or re.search('^[RU][0-9O]+-', item):
                 billing = string[0:i-2]
                 local = string[zip_idx+1:i]
+                #print('yeet')
+
             i += 1
         billing = ' '.join(billing)
         local = ' '.join(local)
@@ -72,16 +79,20 @@ def getAddressText(dir, numAddresses):
         }
 
         addresses.append(temp)
+        #print(billing)
     csvout = 'Billing Address, Local Address\n'
 
     # Write out the billing and local addresses to a file
-    with open('../data/tax_books/tax_book_csvs/readfield.csv', 'w') as file:
+    with open('../data/tax_books/tax_book_csvs/monmouth.csv', 'w') as file:
         for address in addresses:
             csvout += address['billing'] + ',' + address['local'] + '\n'
         file.write(csvout)
 
+    print('File written. Ignored address numbers: ')
+    print(ignored_nums)
+
 
 if __name__ == '__main__':
-    total_files = 1764
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract'
-    getAddressText('../data/tax_books/pngs/readfield_addresses', total_files + 1)
+    total_files = 2753
+    getAddressText('../data/tax_books/pngs/monmouth_addresses', total_files + 1)

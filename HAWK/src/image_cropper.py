@@ -46,7 +46,19 @@ def getAddressesFromPNG(file_address, output_dir, iterator):
 if __name__ == '__main__':
     iterator = 1
 
-    output_dir = '../data/tax_books/pngs/readfield_addresses/'
+    output_dir = '../data/tax_books/pngs/gardiner_addresses/'
 
-    for i in tqdm(range(1, 298)):
-        iterator = getAddressesFromPNG('../data/tax_books/pngs/readfield_book/readfield_book-' + str(i) + '.png', output_dir, iterator)
+
+    for i in tqdm(range(1, 682)):
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/gardiner_book/gardiner_book-' + str(i) + '.png', output_dir, iterator)
+
+
+
+    for i in tqdm(range(1, 9)):
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/farmingdale_book/farmingdale_book-00' + str(i) + '.png', output_dir, iterator)
+
+    for i in tqdm(range(10, 99)):
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/farmingdale_book/farmingdale_book-0' + str(i) + '.png', output_dir, iterator)
+
+    for i in tqdm(range(100, 234)):
+        iterator = getAddressesFromPNG('../data/tax_books/pngs/farmingdale_book/farmingdale_book-' + str(i) + '.png', output_dir, iterator)
