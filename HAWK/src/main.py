@@ -7,6 +7,10 @@ import startup.lake_extractor as extractor
 
 # HAWK entry point
 if __name__ == '__main__':
+    """
+    Some description of my function goes here
+    """
+
 
     # Update the data in the project using updater.py
     #updater.update()
@@ -20,11 +24,11 @@ if __name__ == '__main__':
     #plotter.findWaterfront('annabessacook_lake', ['04259', '04265', '04364'], distance_from = 100)
 
     # Plot waterfront properties
-    '''
-    plt.figure()
-    ax = plt.axes(projection=ccrs.Orthographic())
-    plotter.plotMaranacookLake(ax, 'blue', 'maranacook_lake')
-    plotter.plotMaranacookIslands(ax, 'green', 'maranacook_lake')
-    plotter.plotAddresses(ax, 'red', 'maranacook_lake')
-    plt.show()
-    '''
+    
+    # plt.figure()
+    # ax = plt.axes(projection=ccrs.Orthographic())
+    # plotter.plotMaranacookLake(ax, 'blue', 'maranacook_lake')
+    # plotter.plotMaranacookIslands(ax, 'green', 'maranacook_lake')
+    # plotter.plotAddresses(ax, 'red', 'maranacook_lake')
+    # plt.show()
+    

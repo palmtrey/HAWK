@@ -2,10 +2,9 @@ import re
 from tqdm import tqdm
 
 def cross_reference(tax_dir, waterfront_dir, zip):
-
+    
     waterfront_file = open(waterfront_dir)
 
-    town_addresses = []
     csvout = 'Billing Address, Local Address, Zipcode, Longitude, Latitude\n'
     i = 1
     for waterfront_address in tqdm(waterfront_file):

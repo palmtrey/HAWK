@@ -7,8 +7,7 @@ from tqdm import tqdm
 
 
 # Finds the waterfront properties given a lake name and list of zip codes to search
-def findWaterfront(lake_name, zips, distance_from = 100):
-
+def findWaterfront(lake_name, zips:list, distance_from = 100):
     addressFileLoc = []
     addressFile = []
     for zip in zips:
