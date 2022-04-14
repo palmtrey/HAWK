@@ -5,7 +5,7 @@ Hawk was created as a way for watershed protection agencies to quickly and easil
 
 Take a look at the [Hawk Summary](https://github.com/palmtrey/Hawk/blob/main/Hawk%20Summary.pdf) for a deep dive into how the system works.
 
-# License
+## License
 The Hawk Member Management System is licensed under the open source GNU General Public License v3.0. See [`LICENSE`](https://github.com/palmtrey/Hawk/blob/main/LICENSE) for more details.
 
 
